@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 import { sendMessage as sendChatMessage } from "@/services/chat";
 
 export default function Chat() {
-    const time = new Date().toLocaleDateString();
+    const [voiceEnabled, setVoiceEnabled] = useState(true);
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([
         {
@@ -29,17 +29,20 @@ export default function Chat() {
     }
 
     function speak(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
+        if (!voiceEnabled) return;
+        
+        window.speechSynthesis.cancel();
 
-    utterance.lang = "pt-BR";
-    utterance.rate = 1.6;
-    utterance.pitch = 1.25;
-    utterance.volume = 1;
+        const utterance = new SpeechSynthesisUtterance(text);
 
-    const voices = window.speechSynthesis.getVoices();
+        utterance.lang = "pt-BR";
+        utterance.rate = 1.6;
+        utterance.pitch = 1.25;
 
-    const femaleVoice = voices.find((voice) =>
-        voice.name.includes("pt-BR-FranciscaNeural")
+        const voices = window.speechSynthesis.getVoices();
+
+         const femaleVoice = voices.find((voice) =>
+            voice.name.includes("pt-BR-FranciscaNeural")
     );
 
     if (femaleVoice) {
@@ -85,7 +88,7 @@ export default function Chat() {
                 },
             ]);
 
-            speak(response);
+            speak(response, voiceEnabled);
         } catch (error) {
             setMessages((old) => [
                 ...old,
@@ -102,9 +105,9 @@ export default function Chat() {
     }
 
     return (
-        <div className="w-full max-w-4xl h-[90vh] bg-slate-900 rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+        <div className="w-full max-w-4xl h-[90vh] bg-white border-2 border-zinc-200 flex flex-col overflow-hidden">
             <header>
-                <Navbar/>
+                <Navbar voiceEnabled={voiceEnabled} setVoiceEnabled={setVoiceEnabled}/>
             </header>
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {

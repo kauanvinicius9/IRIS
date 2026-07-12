@@ -14,14 +14,14 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "IRIS - Assistente Inteligente",
   description: "Powered by Ollama 3.2",
+  icons: {
+    icon: "/Logo-Icon-Iris-512x512.svg"
+  }
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="pt-BR" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
