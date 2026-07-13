@@ -10,7 +10,7 @@
 
 - Voice interaction;
 - Animated messages;
-- Support for **3 languages:**:
+- Support for **3 languages**:
     - 🇧🇷 Portuguese;
     - 🇺🇸 English;
     - 🇪🇸 Spanish.
