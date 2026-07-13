@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="frontend/public/Logo-Iris-Purple-919.17x512.51.svg" width="500" alt="Official Logo íris" title="Logo íris"/>
+    <img src="frontend/src/assets/Logo-Iris-Purple-919.17x512.51.svg" width="500" alt="Official Logo íris" title="Logo íris"/>
 </div>
 
 **IRIS** is an **AI assistant** built with modern **Front-End** technologies and powered by the **Ollama API** using the **Llama 3.2** language model.

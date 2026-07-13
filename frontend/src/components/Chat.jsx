@@ -1,23 +1,30 @@
 "use client";
 
-import { useState } from "react";
 import Message from "./Message";
 import Input from "./Input";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
-import { useTranslation } from "react-i18next";
+
+import { useState, useEffect } from "react";
 import { sendMessage as sendChatMessage } from "@/services/chat";
+import { translations } from "@/i18n/locales/translations";
 
 export default function Chat() {
-    const { i18n } = useTranslation;
     const [voiceEnabled, setVoiceEnabled] = useState(true);
+    const [language, setLanguage] = useState("pt");
     const [loading, setLoading] = useState(false);
-    const [messages, setMessages] = useState([
-        {
-            sender: "assistant",
-            text: "Olá! Meu nome é Íris, como posso te ajudar?"
-        }
-    ]);
+    const [messages, setMessages] = useState([]);
+
+    const t = translations[language];
+
+    useEffect(() => {
+        setMessages([
+            {
+                sender: "assistant",
+                text: translations[language].welcome
+            }
+        ]);
+    }, [language]);
 
     function sendMessage(message) {
         if (message.trim() === "") return;
@@ -32,26 +39,27 @@ export default function Chat() {
 
     function speak(text) {
         if (!voiceEnabled) return;
-        
-        window.speechSynthesis.cancel();
 
-        const utterance = new SpeechSynthesisUtterance(text);
-
-        utterance.lang = "pt-BR";
-        utterance.rate = 1.6;
-        utterance.pitch = 1.25;
+        const voiceMap = {
+            pt: "pt-BR",
+            en: "en-US",
+            es: "es-ES"
+        };
 
         const voices = window.speechSynthesis.getVoices();
+        const voice = voices.find((v) => v.lang.startsWith(voiceMap[language]));
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        if (voice) {
+            utterance.voice = voice;
+        }
 
-         const femaleVoice = voices.find((voice) =>
-            voice.name.includes("pt-BR-FranciscaNeural")
-    );
-
-    if (femaleVoice) {
-        utterance.voice = femaleVoice;
-    }
-
-    window.speechSynthesis.speak(utterance);
+        utterance.lang = voiceMap,
+        utterance.rate = 1.6;
+        utterance.pitch = 1.25;
+        
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
 }
 
 
@@ -75,7 +83,7 @@ export default function Chat() {
             es: "Español",
         };
 
-        const currentLanguage = languageMap[i18n.language] || "Português Brasileiro";
+        const currentLanguage = languageMap[language] || "Português Brasileiro";
 
         try {
             const response = await sendChatMessage([
@@ -109,7 +117,7 @@ export default function Chat() {
                 ...old,
                 {
                     sender: "assistant",
-                    text: "Não consegui me conectar ao Ollama",
+                    text: translations[language].error,
                 },
             ]);
 
@@ -122,7 +130,11 @@ export default function Chat() {
     return (
         <div className="w-full max-w-4xl h-[90vh] bg-white border-2 border-zinc-200 flex flex-col overflow-hidden">
             <header>
-                <Navbar voiceEnabled={voiceEnabled} setVoiceEnabled={setVoiceEnabled}/>
+                <Navbar 
+                        voiceEnabled={voiceEnabled} 
+                        setVoiceEnabled={setVoiceEnabled}
+                        language={language}
+                        setLanguage={setLanguage}/>
             </header>
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {
@@ -133,7 +145,10 @@ export default function Chat() {
 
                 {loading && <Loading/>}
             </div>
-            <Input sendMessage={handleSend}/>
+            <Input 
+                    sendMessage={handleSend}
+                    placeholder={t.placeholder}
+                    language={language}/>
         </div>
 
     )
