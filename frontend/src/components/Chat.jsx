@@ -2,6 +2,7 @@
 
 import Message from "./Message";
 import Input from "./Input";
+import VoiceButton from "./VoiceButton";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
 
@@ -14,6 +15,7 @@ export default function Chat() {
     const [language, setLanguage] = useState("pt");
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([]);
+    const [message, setMessage] = useState("");
 
     const t = translations[language];
 
@@ -54,7 +56,7 @@ export default function Chat() {
             utterance.voice = voice;
         }
 
-        utterance.lang = voiceMap,
+        utterance.lang = voiceMap[language],
         utterance.rate = 1.6;
         utterance.pitch = 1.25;
         
@@ -145,10 +147,13 @@ export default function Chat() {
 
                 {loading && <Loading/>}
             </div>
-            <Input 
-                    sendMessage={handleSend}
-                    placeholder={t.placeholder}
-                    language={language}/>
+            <div className="flex items-center p-4 w-full">
+                <VoiceButton language={language} onTranscript={setMessage}/>
+
+                <div className="flex-1">
+                    <Input sendMessage={handleSend} placeholder={t.placeholder} language={language}/>
+                </div>
+            </div>
         </div>
 
     )

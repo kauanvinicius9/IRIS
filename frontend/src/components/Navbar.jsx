@@ -39,10 +39,10 @@ export default function Navbar({
         </button>
 
         <select onChange={(e) => setLanguage(e.target.value)} value={language} 
-                     className="p-2  bg-purple-600 hover:bg-purple-700 cursor-pointer">
-          <option value="pt">Português</option>
-          <option value="en">Inglês</option>
-          <option value="es">Espanhol</option>
+                     className="p-2  bg-purple-600 hover:bg-purple-700 cursor-pointer border-none outline-none">
+          <option value="pt" className="bg-white border-none outline-none text-black hover:bg-zinc-300">Português</option>
+          <option value="en" className="bg-white border-none outline-none text-black hover:bg-zinc-300">Inglês</option>
+          <option value="es" className="bg-white border-none outline-none text-black hover:bg-zinc-300">Espanhol</option>
         </select>
       </div>
     </header>
