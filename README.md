@@ -52,4 +52,5 @@
 ### Official Links
 
 - Ollama: [https://ollama.com/](https://ollama.com/ "Click to Access");
-- Llama 3.2: [https://ollama.com/library/llama3.2](https://ollama.com/library/llama3.2 "Click to Access").
+- Llama 3.2: [https://ollama.com/library/llama3.2](https://ollama.com/library/llama3.2 "Click to Access");
+- Figma íris: [https://www.figma.com](https://www.figma.com/design/grugYdTp6NkQXaO1ZFJH0q/IRIS?node-id=1-3&p=f&t=lTZa6h6VTzen9eVI-0 "Click to Access").
