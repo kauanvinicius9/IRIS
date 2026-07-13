@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="public/Logo-Iris-Purple-919.17x512.51.svg" width="615" alt="Official Logo íris" title="Logo íris"/>
+    <img src="frontend/public/Logo-Iris-Purple-919.17x512.51.svg" width="500" alt="Official Logo íris" title="Logo íris"/>
 </div>
 
 ### Stacks
