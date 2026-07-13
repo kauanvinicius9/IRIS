@@ -2,11 +2,18 @@
     <img src="frontend/public/Logo-Iris-Purple-919.17x512.51.svg" width="500" alt="Official Logo íris" title="Logo íris"/>
 </div>
 
-**IRIS** is an **artificial intelligence** built with **Front-End** technologies and the **Ollama 3.2** `API`. It features voice interaction, animated messages, and support for up to **3 languages**, including:
+**IRIS** is an **AI assistant** built with modern **Front-End** technologies and powered by the **Ollama API** using the **Llama 3.2** language model.
 
-- Portuguese;
-- English;
-- Spanish;
+---
+
+### IT Features
+
+- Voice interaction;
+- Animated messages;
+- Support for **3 languages:**:
+    - 🇧🇷 Portuguese;
+    - 🇺🇸 English;
+    - 🇪🇸 Spanish.
 
 ---
 
@@ -29,3 +36,20 @@
 </div>
 
 ---
+
+### About Íris
+
+> **IRIS** is **not affiliated with** or **endorsed by Ollama**.</br>
+> **Ollama** is used as the local runtime for executing the language model.
+
+- AI Runtime: Ollama;
+- Model: Llama 3.2;
+- Local Interface;
+- Privacy-first architecture.
+
+---
+
+### Official Links
+
+- Ollama: [https://ollama.com/](https://ollama.com/ "Click to Access");
+- Llama 3.2: [https://ollama.com/library/llama3.2](https://ollama.com/library/llama3.2 "Click to Access").
