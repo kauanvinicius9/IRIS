@@ -1,6 +1,14 @@
 <div align="center">
-    <img src="public/Logo-Iris-Purple-919.17x512.51.svg" width="615" alt="Official Logo íris" title="Logo íris"/>
+    <img src="frontend/public/Logo-Iris-Purple-919.17x512.51.svg" width="500" alt="Official Logo íris" title="Logo íris"/>
 </div>
+
+**IRIS** is an **artificial intelligence** built with **Front-End** technologies and the **Ollama 3.2** `API`. It features voice interaction, animated messages, and support for up to **3 languages**, including:
+
+- Portuguese;
+- English;
+- Spanish;
+
+---
 
 ### Stacks
 
