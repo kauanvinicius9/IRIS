@@ -9,7 +9,8 @@ export default function Message({ sender, text }) {
     <motion.div initial={{opacity: 0, y: 15, scale: 0.98,}} animate={{opacity: 1, y: 0, scale: 1,}} transition={{duration: 0.25,}}
                             className={`flex ${sender === "user" ? "justify-end" : "justify-start"}`}>
 
-      <div className={`max-w-[75%] px-4 py-3 rounded-2xl ${sender === "user" ? "bg-white text-black border-2 border-zinc-200" : "bg-white text-black border-2 border-zinc-200"}`}>
+      <div className={`max-w-[75%] px-4 py-3 rounded-2xl 
+                                  ${sender === "user" ? "bg-white text-black border-2 border-zinc-200" : "bg-white text-black border-2 border-zinc-200"}`}>
         {text}
       </div>
     </motion.div>

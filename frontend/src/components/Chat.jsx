@@ -5,9 +5,11 @@ import Message from "./Message";
 import Input from "./Input";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
+import { useTranslation } from "react-i18next";
 import { sendMessage as sendChatMessage } from "@/services/chat";
 
 export default function Chat() {
+    const { i18n } = useTranslation;
     const [voiceEnabled, setVoiceEnabled] = useState(true);
     const [loading, setLoading] = useState(false);
     const [messages, setMessages] = useState([
@@ -67,12 +69,25 @@ export default function Chat() {
         setMessages(history);
         setLoading(true);
 
+        const languageMap = {
+            pt: "Português Brasileiro",
+            en: "English",
+            es: "Español",
+        };
+
+        const currentLanguage = languageMap[i18n.language] || "Português Brasileiro";
+
         try {
             const response = await sendChatMessage([
                 {
                     role: "system",
-                    content:
-                        "Você é IRIS, uma assistente virtual",
+                    content: `
+                        Você é íris, uma assistente virtual.
+
+                        Responde sempre em ${currentLanguage}.
+                        Nunca misture idiomas.
+                        Se o usuário escrever em outro idioma, responda no idioma atualmente selecionado.
+                    `,
                 },
                 ...history.map((msg) => ({
                     role: msg.sender === "assistant" ? "assistant" : "user",

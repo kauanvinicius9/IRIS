@@ -15,7 +15,7 @@ export const metadata = {
   title: "IRIS - Assistente Inteligente",
   description: "Powered by Ollama 3.2",
   icons: {
-    icon: "/Logo-Icon-Iris-512x512.svg"
+    icon: "/Logo-Icon-Iris-Purple-512x512.svg"
   }
 };
 
