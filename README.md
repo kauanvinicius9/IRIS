@@ -30,8 +30,6 @@
   <img width="1" />
   <img src="https://skillicons.dev/icons?i=github" height="45" alt="github logo" title="GitHub" />
   <img width="1" />
-  <img src="https://skillicons.dev/icons?i=powershell" height="45" alt="powershell logo" title="Powershell" />
-  <img width="1" />
   <img src="https://skillicons.dev/icons?i=figma" height="45" alt="figma logo" title="Figma" />
 </div>
 
