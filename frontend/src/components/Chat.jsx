@@ -5,10 +5,13 @@ import Input from "./Input";
 import VoiceButton from "./VoiceButton";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
+import Image from "next/image";
 
 import { useState, useEffect } from "react";
 import { sendMessage as sendChatMessage } from "@/services/chat";
 import { translations } from "@/i18n/locales/translations";
+
+import logo from "../assets/Logo-Text-Iris-Background-397.66x151.66.png";
 
 export default function Chat() {
     const [voiceEnabled, setVoiceEnabled] = useState(true);
@@ -63,7 +66,6 @@ export default function Chat() {
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(utterance);
 }
-
 
     async function handleSend(message) {
         if (!message.trim()) return;
@@ -130,7 +132,9 @@ export default function Chat() {
     }
 
     return (
-        <div className="w-full max-w-4xl h-[90vh] bg-white border-2 border-zinc-200 flex flex-col overflow-hidden">
+        <div className="relative w-full max-w-4xl h-[90vh] bg-white border-2 border-zinc-200 flex flex-col overflow-hidden">
+            <Image src={logo} alt="Iris" className="absolute inset-0 m-auto w-95 h-auto pointer-events-none select-none"/>
+
             <header>
                 <Navbar 
                         voiceEnabled={voiceEnabled} 
@@ -138,7 +142,7 @@ export default function Chat() {
                         language={language}
                         setLanguage={setLanguage}/>
             </header>
-            <div className="flex-1 overflow-y-auto p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-6 space-y-4 ">
                 {
                     messages.map((msg,index)=>(
                         <Message key={index} sender={msg.sender} text={msg.text}/>
